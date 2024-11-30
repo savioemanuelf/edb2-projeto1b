@@ -2,8 +2,8 @@
 EXECUTABLE = programa
 
 # Diretórios
-SRC_DIR = implementations
-HEADER_DIR = headers
+SRC_DIR = implementacoes
+HEADER_DIR = cabecalho
 BUILD_DIR = build
 
 # Compilador e flags

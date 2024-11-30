@@ -1,5 +1,5 @@
-#include "../headers/aeronave.h"
-#include "../headers/heap.h"
+#include "../cabecalho/aeronave.h"
+#include "../cabecalho/heap.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

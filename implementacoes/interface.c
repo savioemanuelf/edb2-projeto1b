@@ -1,4 +1,4 @@
-#include "../headers/interface.h"
+#include "../cabecalho/interface.h"
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h> 
