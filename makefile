@@ -16,7 +16,8 @@ OBJECTS = $(patsubst %.c, $(BUILD_DIR)/%.o, $(notdir $(SOURCES)))
 
 # Regras principais
 all: $(BUILD_DIR) $(EXECUTABLE)
-
+	./$(EXECUTABLE)
+	$(MAKE) clean
 # Criação do executável
 $(EXECUTABLE): $(OBJECTS)
 	$(CC) $(CFLAGS) $(OBJECTS) -o $@
