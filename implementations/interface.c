@@ -1,9 +1,21 @@
 #include "../headers/interface.h"
 #include <stdio.h>
 #include <string.h>
+#include <unistd.h> 
+
+void limparTerminal() {
+    #ifdef OS_Windows
+        system("cls");
+    #else
+        system("clear");
+    #endif
+}
 
 void exibirMenu() {
-    printf("\n--- Menu ---\n");
+    limparTerminal();
+    printf ("******************************************");
+    printf ("\n**                 MENU                 **");
+    printf ("\n******************************************\n");
     printf("1. Carregar aeronaves de um arquivo CSV\n");
     printf("2. Inserir aeronave manualmente\n");
     printf("3. Mostrar aeronaves na heap\n");
@@ -11,6 +23,13 @@ void exibirMenu() {
     printf("5. Consultar aeronave com maior prioridade\n");
     printf("6. Sair\n");
     printf("Escolha uma opcao: ");
+}
+
+void opcaoSelecionada(int opcao) {
+    limparTerminal();
+    printf ("******************************************\n");
+    printf ("**          OPCAO SELECIONADA: %d        **\n", opcao);
+    printf ("******************************************\n");   
 }
 
 void inserirAeronaveManual(Heap *heap) {
