@@ -70,5 +70,7 @@ void consultarMaiorPrioridadeHeap(Heap *heap) {
 }
 
 void listarCSV() {
-    system("ls -l *.csv");
+    printf("Arquivos CSV no diretorio atual: \n");
+    system("ls *.csv");
+    printf("\n");
 }
