@@ -1,28 +1,41 @@
-CC = gcc
-CFLAGS = -c
-LDFLAGS =
+# Nome do executável
+EXECUTABLE = programa
+
+# Diretórios
 SRC_DIR = implementations
-OBJ_DIR = objetos
-BIN = programa
+HEADER_DIR = headers
+BUILD_DIR = build
 
-SOURCES = main.c $(SRC_DIR)/aeronave.c $(SRC_DIR)/heap.c
-OBJECTS = $(OBJ_DIR)/main.o $(OBJ_DIR)/aeronave.o $(OBJ_DIR)/heap.o
+# Compilador e flags
+CC = gcc
+CFLAGS = -Wall -Wextra -I$(HEADER_DIR)
 
-all: $(BIN)
-	./$(BIN)
-	$(MAKE) clean
+# Fontes e objetos
+SOURCES = main.c $(wildcard $(SRC_DIR)/*.c)
+OBJECTS = $(patsubst %.c, $(BUILD_DIR)/%.o, $(notdir $(SOURCES)))
 
-$(BIN): $(OBJECTS)
-	$(CC) -o $(BIN) $(OBJECTS)
+# Regras principais
+all: $(BUILD_DIR) $(EXECUTABLE)
 
-$(OBJ_DIR)/main.o: main.c
-	$(CC) $(CFLAGS) -o $@ $<
+# Criação do executável
+$(EXECUTABLE): $(OBJECTS)
+	$(CC) $(CFLAGS) $(OBJECTS) -o $@
 
-$(OBJ_DIR)/aeronave.o: $(SRC_DIR)/aeronave.c
-	$(CC) $(CFLAGS) -o $@ $<
+# Compilação dos arquivos .c para .o
+$(BUILD_DIR)/%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
-$(OBJ_DIR)/heap.o: $(SRC_DIR)/heap.c
-	$(CC) $(CFLAGS) -o $@ $<
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
+# Criar diretório build se não existir
+$(BUILD_DIR):
+	mkdir -p $(BUILD_DIR)
+
+# Limpeza dos arquivos gerados
 clean:
-	rm -f $(OBJ_DIR)/*.o $(BIN)
+	rm -rf $(BUILD_DIR) $(EXECUTABLE)
+
+# Regra para executar o programa
+run: $(EXECUTABLE)
+	./$(EXECUTABLE)

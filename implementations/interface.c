@@ -8,7 +8,8 @@ void exibirMenu() {
     printf("2. Inserir aeronave manualmente\n");
     printf("3. Mostrar aeronaves na heap\n");
     printf("4. Remover aeronave com maior prioridade\n");
-    printf("5. Sair\n");
+    printf("5. Consultar aeronave com maior prioridade\n");
+    printf("6. Sair\n");
     printf("Escolha uma opcao: ");
 }
 
