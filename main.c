@@ -11,7 +11,7 @@ int main() {
     int opcao = 0;
     char arquivo[50];
 
-    while (opcao != 6) {
+    while (opcao != 7) {
         printf("Pressione enter para limpar o terminal e ver o menu: \n");
         getchar();
         exibirMenu();
@@ -27,38 +27,41 @@ int main() {
                     strcat(arquivo, ".csv");
                 }
                 carregarAeronaveCSV(arquivo, &heap);
-                printf("O arquivo %s foi carregado com sucesso\n", arquivo);
                 getchar();
                 break;
 
             case 2:
                 inserirAeronaveManual(&heap);
-                sleep(3);
+                getchar();
                 break;
             case 3:
                 printf("Aeronaves na heap (ordenadas pela prioridade):\n");
                 mostrarHeap(&heap);
-                sleep(3);
+                getchar();
                 break;
 
             case 4:
                 removerAeronave(&heap);
                 printf("Aeronave de maior prioridade removida.\n");
-                sleep(3);
+                getchar();
                 break;
 
             case 5:
                 consultarMaiorPrioridadeHeap(&heap);
-                sleep(3);
+                getchar();
                 break;
             case 6:
+                listarCSV();
+                getchar();
+                break;
+            case 7:
                 printf("Saindo do programa...\n");
                 sleep(1.5);
                 limparTerminal();
                 break;
             default:
                 printf("Opcao invalida. Tente novamente.\n");
-                sleep(3);
+                getchar();
         }
     }
 

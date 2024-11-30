@@ -22,7 +22,8 @@ void exibirMenu() {
     printf("3. Mostrar aeronaves na heap\n");
     printf("4. Remover aeronave com maior prioridade\n");
     printf("5. Consultar aeronave com maior prioridade\n");
-    printf("6. Sair\n");
+    printf("6. Listar arquivos CSV\n");
+    printf("7. Sair\n");
     printf("Escolha uma opcao: ");
 }
 
@@ -66,4 +67,8 @@ void consultarMaiorPrioridadeHeap(Heap *heap) {
         printf("ID: %s, Combustivel: %d, Tempo: %d, Tipo: %d, Emergencia: %d, Prioridade: %d\n", 
                top.id, top.combustivel, top.tempo, top.tipo, top.emergencia, top.prioridade);
     }
+}
+
+void listarCSV() {
+    system("ls -l *.csv");
 }

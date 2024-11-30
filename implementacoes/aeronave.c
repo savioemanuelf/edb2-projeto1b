@@ -20,6 +20,8 @@ void carregarAeronaveCSV(const char *filename, Heap *heap)
     {
         perror("Erro ao abrir o arquivo");
         return;
+    } else {
+        printf("O arquivo %s foi carregado com sucesso\n", filename);
     }
 
     char line[256];
