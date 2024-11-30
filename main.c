@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 int main() {
     Heap heap;
@@ -52,6 +53,8 @@ int main() {
                 break;
             case 6:
                 printf("Saindo do programa...\n");
+                sleep(1.5);
+                limparTerminal();
                 break;
             default:
                 printf("Opcao invalida. Tente novamente.\n");
