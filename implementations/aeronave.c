@@ -4,32 +4,37 @@
 #include <stdlib.h>
 #include <string.h>
 
-void calcularPrioridade(Aeronave *aeronave) {
+void calcularPrioridade(Aeronave *aeronave)
+{
     aeronave->prioridade = (1000 - aeronave->combustivel) +
-                         (1440 - aeronave->tempo) +
-                         500 * aeronave->tipo +
-                         5000 * aeronave->emergencia;
+                           (1440 - aeronave->tempo) +
+                           500 * aeronave->tipo +
+                           5000 * aeronave->emergencia;
 }
 
 // CARREGAR AERONAVE
-void carregarAeronaveCSV(const char *filename, Heap *heap) {
+void carregarAeronaveCSV(const char *filename, Heap *heap)
+{
     FILE *file = fopen(filename, "r");
-    if (!file) {
+    if (!file)
+    {
         perror("Erro ao abrir o arquivo");
         return;
     }
 
     char line[256];
-    while (fgets(line, sizeof(line), file)) {
+    while (fgets(line, sizeof(line), file))
+    {
         Aeronave aeronave;
-        
-        int n = sscanf(line, "%9[^,], %d, %d, %d, %d", 
-                        aeronave.id, 
-                        &aeronave.combustivel, 
-                        &aeronave.tempo, 
-                        &aeronave.tipo, 
-                        &aeronave.emergencia);
-        if (n == 5) {
+
+        int n = sscanf(line, "%9[^,], %d, %d, %d, %d",
+                       aeronave.id,
+                       &aeronave.combustivel,
+                       &aeronave.tempo,
+                       &aeronave.tipo,
+                       &aeronave.emergencia);
+        if (n == 5)
+        {
             calcularPrioridade(&aeronave);
             inserirAeronave(heap, aeronave);
         }
