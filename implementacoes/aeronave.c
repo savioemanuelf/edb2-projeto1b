@@ -1,5 +1,6 @@
 #include "../cabecalho/aeronave.h"
 #include "../cabecalho/heap.h"
+#include "../cabecalho/interface.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -19,6 +20,7 @@ void carregarAeronaveCSV(const char *filename, Heap *heap)
     if (!file)
     {
         perror("Erro ao abrir o arquivo");
+        listarCSV();
         return;
     } else {
         printf("O arquivo %s foi carregado com sucesso\n", filename);
